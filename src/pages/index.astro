@@ -1,0 +1,321 @@
+---
+import "@/styles/global.css";
+import Navbar from "@/components/navigation/navbar";
+import { Button } from "@/components/ui/Button";
+import LogoCloud from "@/components/ui/logos/LogoCloud";
+import { Meteors } from "@/components/ui/Meteors";
+---
+
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Bruin Spacecraft Group at UCLA</title>
+
+    <style>
+      @keyframes gradientFlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      .animate-gradient-text {
+        background: linear-gradient(
+          150deg, 
+          #FFFFFF 0%, 
+          #1a5cc8 40%,
+          #ead833 100%
+        );
+        background-size: 200% auto;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientFlow 10s ease infinite;
+        padding: 0 0.1em;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+      }
+
+	  /* Floating animation for Bru */
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+    </style>
+  </head>
+
+  <body class="bg-black text-white antialiased overflow-x-hidden selection:bg-blue-500/30">
+
+    <div class="fixed top-0 w-full z-50">
+       <Navbar client:load />
+    </div>
+
+    <div class="fixed inset-0 z-0 w-full h-full pointer-events-none overflow-hidden">
+      <video
+        class="absolute top-0 left-0 w-full h-full object-cover opacity-50"
+        autoplay
+        loop
+        muted
+        playsinline
+      >
+        <source src="/webvideo.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/90"></div>
+    </div>
+
+    <main class="relative z-10">
+      <div class="min-h-screen flex flex-col justify-between pt-20 pb-0">
+        <section class="flex-1 w-full flex flex-col items-center justify-center text-center px-4 animate-fade-in-up">
+          
+          <h1 class="font-extrabold tracking-tighter leading-[0.9] text-balance text-[clamp(2.5rem,8vw,6.5rem)] drop-shadow-2xl mb-4 py-2">
+            <span class="animate-gradient-text">
+              Bruin Spacecraft Group
+            </span>
+          </h1>
+
+          <h2 class="text-2xl md:text-4xl font-light tracking-wide text-neutral-300">
+            at <span class="text-[#2774AE] font-medium drop-shadow-[0_0_20px_rgba(255,209,0,0.4)]">UCLA</span>
+          </h2>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mt-10">
+            <a href="#projects">
+                <Button size="lg" className="h-14 px-10 text-lg bg-white text-black hover:bg-neutral-200 rounded-full transition-all hover:scale-105 shadow-[0_0_25px_rgba(255,255,255,0.2)]">
+                  Current Projects
+                </Button>
+            </a>
+            <a href="#about">
+                <Button variant="outline" size="lg" className="h-14 px-10 text-lg border-white/20 text-white backdrop-blur-md hover:bg-white/10 rounded-full transition-all hover:scale-105">
+                  About Us
+                </Button>
+            </a>
+          </div>
+
+        </section>
+
+        <div class="w-full pointer-events-auto z-20">
+          <LogoCloud client:load />
+        </div>
+      </div>
+
+      <section id="projects" class="relative w-full py-32 bg-black border-t border-white/10 z-20 overflow-hidden">
+
+        <div class="absolute inset-0 h-full w-full pointer-events-none z-10">
+            <Meteors client:visible number={20} />
+        </div>
+
+        <div id="bg-overseer" class="absolute inset-0 z-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none">
+            <div class="absolute inset-0 bg-black/70 z-10"></div> {/* Dark Overlay for text readability */}
+            <img src="/overseer.jpg" alt="Overseer Background" class="w-full h-full object-cover" />
+        </div>
+
+        <div id="bg-rapid" class="absolute inset-0 z-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none">
+            <div class="absolute inset-0 bg-black/70 z-10"></div> {/* Dark Overlay */}
+            <img src="/rapid.jpg" alt="Rapid Background" class="w-full h-full object-cover" />
+        </div>
+
+        <div class="container mx-auto px-4 relative z-20">
+            
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Current Projects</h2>
+                <p class="text-neutral-400 max-w-2xl mx-auto text-lg">
+                    Redefining student-led spacecraft engineering. 
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                
+                <a href="#" id="card-overseer" class="block group relative">
+                  <div class="relative overflow-hidden rounded-[2rem] bg-neutral-900/40 border border-white/10 hover:border-orange-500/30 transition-all duration-500 hover:shadow-[0_0_50px_-10px_rgba(249,115,22,0.2)] h-full backdrop-blur-[2px]">
+                      <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      <div class="relative p-10 flex flex-col h-full min-h-[400px] justify-between">
+                          <div>
+                              <div class="inline-block px-3 py-1 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-xs font-mono mb-6">
+                                  INTRO PROJECT
+                              </div>
+                              <h3 class="text-4xl font-bold mb-4 group-hover:text-orange-100 transition-colors">Overseer</h3>
+                              <p class="text-neutral-300 text-lg leading-relaxed">
+                                  High-altitude weather balloon project, designed to be accessible to new members. Overseer introduces students to mission design, hardware, and software through a series of structured flights.
+                              </p>
+                          </div>
+                          
+                          <div class="mt-8 flex items-center gap-2 text-orange-400 font-medium group-hover:translate-x-2 transition-transform">
+                               Explore Mission <span>→</span>
+                          </div>
+                      </div>
+                  </div>
+                </a>
+
+                <a href="/rapid" id="card-rapid" class="block group relative">
+                    <div class="relative overflow-hidden rounded-[2rem] bg-neutral-900/40 border border-white/10 hover:border-blue-500/30 transition-all duration-500 hover:shadow-[0_0_50px_-10px_rgba(59,130,246,0.2)] h-full backdrop-blur-[2px]">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        
+                        <div class="relative p-10 flex flex-col h-full min-h-[400px] justify-between">
+                            <div>
+                                <div class="inline-block px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-mono mb-6">
+                                    FLAGSHIP PROJECT
+                                </div>
+                                <h3 class="text-4xl font-bold mb-4 group-hover:text-blue-100 transition-colors">Rapid</h3>
+                                <p class="text-neutral-300 text-lg leading-relaxed">
+                                    3U CubeSat project designed for scientific research in orbit to facilitate the development of future satellites capable of carrying high-power, high-volume, pointing-requiring payloads. Members learn and apply industry-standard engineering practices to build complex space systems.
+                                </p>
+                            </div>
+
+                            <div class="mt-8 flex items-center gap-2 text-blue-400 font-medium group-hover:translate-x-2 transition-transform">
+                                Explore Mission <span>→</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+      </section>
+
+      <script>
+	  	document.addEventListener('DOMContentLoaded', () => {
+			const cardOverseer = document.getElementById('card-overseer')!;
+			const bgOverseer = document.getElementById('bg-overseer')!;
+			
+			const cardRapid = document.getElementById('card-rapid')!;
+			const bgRapid = document.getElementById('bg-rapid')!;
+
+			cardOverseer.addEventListener('mouseenter', () => {
+				bgOverseer.classList.remove('opacity-0');
+				bgOverseer.classList.add('opacity-100');
+			});
+			cardOverseer.addEventListener('mouseleave', () => {
+				bgOverseer.classList.remove('opacity-100');
+				bgOverseer.classList.add('opacity-0');
+			});
+
+			cardRapid.addEventListener('mouseenter', () => {
+				bgRapid.classList.remove('opacity-0');
+				bgRapid.classList.add('opacity-100');
+			});
+			cardRapid.addEventListener('mouseleave', () => {
+				bgRapid.classList.remove('opacity-100');
+				bgRapid.classList.add('opacity-0');
+			});
+		});
+	  </script>
+
+      <section id="about" class="relative w-full bg-neutral-950 border-t border-white/10">
+
+        <div class="container mx-auto px-4 py-24">
+            <div class="flex flex-col gap-16 max-w-7xl mx-auto">
+
+                <div class="text-center">
+                    <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">About Us</h2>
+                    <div class="h-1 w-20 bg-blue-500 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                    <div class="space-y-6 text-lg text-neutral-300 leading-relaxed">
+                        <p class="font-medium text-white text-xl">
+                            BruinSpace at UCLA is a student-led organization dedicated to fostering innovation, collaboration, and hands-on experience in the field of aerospace engineering. We are more than just a club; we are a community where students from all disciplines—engineering, science, business, arts, and beyond—come together to explore the vast possibilities of space exploration.
+                        </p>
+                        <p>
+                            Our mission is to empower the next generation of space leaders by providing opportunities to design, develop, and execute real-world space missions. Through our flagship projects, such as CubeSat development and high-altitude balloon payloads, BruinSpace members gain invaluable experience in the full lifecycle of space technology projects—from concept and design to manufacturing, testing, and launch.
+                        </p>
+                        <p>
+                            Located within the heart of the aerospace industry in Southern California, BruinSpace leverages UCLA’s strong ties with industry leaders, offering students unique opportunities to connect with professionals, secure mentorship, and collaborate on cutting-edge research. Our members are not only building tangible projects; they are also shaping the future of space technology.
+                        </p>
+                    </div>
+                    
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                        <img 
+                        src="/bruinspace_banner.jpg" 
+                        alt="Bruin Space Banner and Hardware" 
+                        class="relative rounded-2xl shadow-2xl border border-white/10 w-full object-cover h-[400px]"
+                        />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-8">
+                    
+                    <div class="relative group order-2 lg:order-1">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                        <img 
+                        src="/bruinspace_overall.png" 
+                        alt="The Bruin Space Community" 
+                        class="relative rounded-2xl shadow-2xl border border-white/10 w-full object-cover h-[400px]"
+                        />
+                    </div>
+
+                    <div class="space-y-6 text-lg text-neutral-300 leading-relaxed order-1 lg:order-2">
+                        <h3 class="text-2xl font-bold text-white mb-2">Empowering Tomorrow's Space Leaders at UCLA</h3>
+                        <p>
+                            BruinSpace is committed to diversity and inclusivity, welcoming students from all backgrounds and academic interests. Whether you're an engineer, a scientist, a business major, or an artist, there’s a place for you in BruinSpace. Our interdisciplinary approach ensures that every member can contribute meaningfully to our projects and initiatives, bringing fresh perspectives and innovative ideas to the table.
+                        </p>
+                        <p>
+                            Through hands-on projects, educational programs, and industry partnerships, BruinSpace is creating an environment where students can grow, lead, and make a tangible impact on the world of space exploration. We are passionate about what we do, and we invite you to join us as we push the boundaries of what’s possible.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="relative w-full bg-neutral-950 py-24 border-t border-white/10">
+            <div class="container mx-auto px-4">
+                <div class="max-w-6xl mx-auto p-8 md:p-16 relative">
+
+                    <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] pointer-events-none"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center relative z-10">
+                        
+                        <div class="flex justify-center md:justify-start">
+                            <div class="relative w-64 h-64 md:w-80 md:h-80 animate-float">
+                                <div class="absolute inset-4 bg-blue-400/30 rounded-full blur-2xl"></div>
+                                <img 
+                                src="/bru.png" 
+                                alt="Our Mascot, Bru" 
+                                class="relative w-full h-full object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-2 space-y-8">
+                            <div>
+                            <h3 class="text-3xl md:text-4xl font-bold text-white mb-4 flex items-baseline gap-4">
+                                Bru
+                                <span class="text-lg md:text-xl text-blue-500 font-medium tracking-widest">
+                                    Our Mascot
+                                </span>
+                            </h3>
+                            <p class="text-lg text-neutral-300 leading-relaxed">
+                                The most visible and powerful symbol of our vision is our mascot, Bru. The space bear was inspired by UCLA's Bruin Bear and represents the university's heritage, school spirit, and all that its student body embodies. Bru's space suit represents the club's focus on the various aspects of research and development in the realm of space science and technology, including but not limited to scientific payloads, satelites, and radio communications.
+                            </p>
+                            <p class="text-lg text-neutral-300 leading-relaxed mt-4">
+                                Bru in Space is a symbol of BruinSpace's unique approach in space mission studies and design, combining well-focused projects within timelines structured around the framework of the school year with a <span class="text-white font-medium">light-hearted and fun atmosphere</span> for space nerds to get creative and begin to sketch out and build their dream.
+                            </p>
+                            </div>
+                            
+                            <blockquote class="border-l-4 border-blue-500 pl-6 py-2 bg-black/20 rounded-r-xl">
+                                <p class="italic text-neutral-400 mb-4">
+                                    "The creation of Bru was actually an accident, just like many other wonderful space discoveries! They were supposed to be a funny little background doodle in presentation slide backgrounds, but once the marketing team realized how adorable the character was, I had to evolve this little bear into a full character. The name Bru was chosen because it is a pun for the name of the club (Bru in Space). And now they reside, surrounded by stars and endless possibility, discovering and learning just like the Bruins on Earth."
+                                </p>
+                                <footer class="text-sm font-bold text-white">
+                                    — Jeanine Lee <span class="text-blue-400 font-normal">Creator</span>
+                                </footer>
+                            </blockquote>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      </section>
+
+    </main>
+  </body>
+</html>

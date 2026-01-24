@@ -1,0 +1,187 @@
+---
+import "@/styles/global.css";
+import Navbar from "@/components/navigation/navbar";
+import { Button } from "@/components/ui/Button";
+import RapidTeam from "@/components/teams/RapidTeam.astro";
+import { Cover } from "@/components/ui/space_text/Cover"; 
+import RotatingRapidModel from "@/components/rapid/RotatingRapidModel";
+import { Timeline } from "@/components/timeline/Timeline";
+import { RapidSpecifications } from "@/components/rapid/RapidSpecifications";
+
+const specifications = [
+  {
+    title: "Structure",
+    description: "3U (100x100x330mm) chassis made of 6061 Aluminum. Designed with 1U of space for the payload.",
+    image: "satellite_render.png" 
+  },
+  {
+    title: "ADCS",
+    description: "Fully custom attitude determination and control system utilizing 4 reaction wheels and 3 magnetorquers.",
+    image: "adcs.png" 
+  },
+  {
+    title: "Avionics",
+    description: "Boards designed in-house with 4 subsystems containing MCUs running our flight software developed from the ground up.",
+    image: "flatsat.jpg" 
+  },
+  {
+    title: "Electrical Power System",
+    description: "2s3p 18650 Li-ion pack powered by 4 fixed solar panels. Provides 3V3, 5V, and a 12V bus with 130W (28Wh) pulse capability.",
+    image: "battery.png" 
+  },
+  {
+    title: "Communications",
+    description: "Command and telemetry link operating through UHF communication at 432 MHz with a deployable bent dipole antenna.",
+    image: "comms.png" 
+  },
+  {
+    title: "Payload & Imaging",
+    description: "High-power 12V system designed for scientific research, and a camera leveraging our ADCS for observation.",
+    image: "flatsat2.jpg" 
+  }
+];
+
+const timeline = [
+  {
+    year: "April 2024",
+    title: "Beginnings",
+    description: "Through inspiration by a former partnership with a lab working on an ion thruster, we created the current idea, design, and plan for Project Rapid as it is now.",
+  },
+  {
+    year: "February 2025",
+    title: "Initial Design",
+    description: "Finished initial design of flight PCBs and manufactured first chassis prototype.",
+  },
+  {
+    year: "May 2025",
+    title: "Foundations of Flight Software",
+    description: "Finalized structuring of intersubsystem communication and developed foundational modules for testing and writing flight software.",
+  },
+  {
+    year: "August 2025",
+    title: "Initial Attitude Determination Software",
+    description: "Developed TRIAD algorithm for attitude estimation and an MEKF for noise reduction and propagation from the estimate.",
+  },
+  {
+    year: "January 2026",
+    title: "Reaction Wheel Control System",
+    description: "Created a PD controller for one reaction wheel in Simulink and implemented it in flight code.",
+  },
+  {
+    year: "By April 2026",
+    title: "Mission Simulations",
+    description: "Build and run robust simulations for various trajectories and conditions.",
+  },
+  {
+    year: "By April 2026",
+    title: "Final ADCS Simulink Model",
+    description: "Incorporate both the reaction wheel and magnetorquer control systems in a fully simulated ADCS.",
+  },
+  {
+    year: "By December 2026",
+    title: "Finish All ADCS Flight Software",
+    description: "Develop code to determine and control attitude through our custom algorithms and drivers.",
+  },
+  {
+    year: "By December 2027",
+    title: "Final Model Assembly",
+    description: "Integration of all PCBs and components with chassis.",
+  },
+  {
+    year: "By June 2028",
+    title: "Launch",
+    description: "Detumble, stabilize, and begin communication with ground.",
+  },
+  {
+    year: "June 2028+",
+    title: "Scientific Research",
+    description: "Collect data from our ground station and perform research and experiments.",
+  },
+];
+---
+
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Rapid | Bruin Spacecraft Group</title>
+  </head>
+  <body class="bg-black text-white antialiased overflow-x-hidden selection:bg-blue-500/30">
+
+    <div class="fixed top-0 w-full z-50">
+       <Navbar client:load />
+    </div>
+    
+    <div class="fixed inset-0 z-0 w-full h-full pointer-events-none">
+        <RotatingRapidModel client:load />
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20"></div>
+    </div>
+
+    <main class="relative z-10 min-h-screen flex flex-col pt-16 pointer-events-none">
+      
+      <section class="flex-1 w-full flex flex-col lg:flex-row items-center min-h-[90vh]">
+        
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+              <div class="pointer-events-auto">
+                <div class="relative w-full max-w-2xl p-8 md:p-12 rounded-3xl bg-black/30 backdrop-blur-md border border-white/10 shadow-2xl animate-fade-in-up text-left">
+                
+                  <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+                      <span>Project</span>
+                      <Cover client:load className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
+                      Rapid
+                      </Cover>
+                  </h1>
+
+                  <p class="text-lg md:text-xl text-neutral-200 mb-10 leading-relaxed">
+                      Student-led 3U CubeSat project empowering the next generation of space leaders.
+                  </p>
+
+                  <div class="flex flex-col sm:flex-row items-center justify-start gap-4">
+                      <Button size="lg" className="h-12 px-8 bg-blue-600 hover:bg-blue-500 text-white rounded-full shadow-lg hover:shadow-blue-500/25 transition-all">
+                          View Mission
+                      </Button>
+                      <Button variant="outline" size="lg" className="h-12 px-8 border-white/20 text-white hover:bg-white/10 rounded-full">
+                          Join Team
+                      </Button>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="hidden lg:block h-full min-h-[500px]"></div>
+
+            </div>
+		</div>
+
+      </section>
+
+    </main>
+
+    <section id="specs" class="relative z-20 w-full bg-neutral-950 border-t border-white/10 py-24">
+      <div class="container mx-auto px-4">
+
+        <div class="max-w-4xl mx-auto text-center mb-20">
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Technical Specifications</h2>
+            <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full mb-8"></div>
+        </div>
+
+        <RapidSpecifications client:visible specs={specifications} />
+
+      </div>
+    </section>
+
+    <section id="timeline" class="relative z-20 w-full bg-black border-t border-white/10 py-24">
+        <div class="container mx-auto px-4 text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Mission Timeline</h2>
+          <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full mb-8"></div>
+        </div>
+        
+        <Timeline client:visible data={timeline} />
+    </section>
+
+	<RapidTeam />
+
+  </body>
+</html>
