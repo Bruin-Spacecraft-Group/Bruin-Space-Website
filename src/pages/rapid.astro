@@ -125,12 +125,12 @@ const timeline = [
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
               <div class="pointer-events-auto">
-                <div class="relative w-full max-w-2xl p-8 md:p-12 rounded-3xl bg-black/30 backdrop-blur-md border border-white/10 shadow-2xl animate-fade-in-up text-left">
-                
+                <div class="relative w-full max-w-2xl p-8 md:p-12 rounded-3xl bg-neutral-900/20 backdrop-blur-[2px] border border-white/10 shadow-2xl animate-fade-in-up text-left">
+                 
                   <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6">
                       <span>Project</span>
                       <Cover client:load className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500">
-                      Rapid
+                       Rapid
                       </Cover>
                   </h1>
 
@@ -145,7 +145,7 @@ const timeline = [
                       <Button variant="outline" size="lg" className="h-12 px-8 border-white/20 text-white hover:bg-white/10 rounded-full">
                           Join Team
                       </Button>
-                  </div>
+                   </div>
 
                 </div>
               </div>
@@ -172,13 +172,21 @@ const timeline = [
       </div>
     </section>
 
-    <section id="timeline" class="relative z-20 w-full bg-black border-t border-white/10 py-24">
-        <div class="container mx-auto px-4 text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Mission Timeline</h2>
-          <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full mb-8"></div>
+    <section id="timeline" class="relative z-20 w-full bg-black border-t border-white/10 py-24 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none"
+             style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(circle at center, black 40%, transparent 100%);">
         </div>
         
-        <Timeline client:visible data={timeline} />
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-blue-900/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+
+        <div class="container mx-auto px-4 text-center mb-16 relative z-10">
+           <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">Mission Timeline</h2>
+           <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full mb-8"></div>
+        </div>
+        
+        <div class="relative z-10">
+            <Timeline client:visible data={timeline} />
+        </div>
     </section>
 
 	<RapidTeam />

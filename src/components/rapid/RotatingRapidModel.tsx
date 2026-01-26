@@ -1,9 +1,33 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, PerspectiveCamera, useGLTF, Center } from "@react-three/drei";
+import { Environment, PerspectiveCamera, useGLTF, Center, Stars, Float } from "@react-three/drei";
 import { useRef, useState, useEffect } from "react";
 import * as THREE from "three";
+
+function BackgroundStars() {
+  const starsRef = useRef<THREE.Group>(null);
+  
+  useFrame((state, delta) => {
+    if (!starsRef.current) return;
+    starsRef.current.rotation.y += delta * 0.02; 
+    starsRef.current.rotation.x += delta * 0.01;
+  });
+
+  return (
+    <group ref={starsRef}>
+      <Stars 
+        radius={100} 
+        depth={50} 
+        count={2500} 
+        factor={5} 
+        saturation={0} 
+        fade 
+        speed={1} 
+      />
+    </group>
+  );
+}
 
 function SatelliteModel() {
   const { scene } = useGLTF("/top_level_assembly.glb");
@@ -47,7 +71,9 @@ export default function RotatingRapidModel() {
   return (
     <div className="absolute inset-0 w-full h-full z-0">
       <Canvas gl={{ antialias: true, alpha: true }} dpr={[1, 2]}>
-        
+
+        <BackgroundStars />
+
         <PerspectiveCamera makeDefault position={[0, 0, 20]} fov={45} />
 
         <ambientLight intensity={1.5} />
@@ -55,7 +81,14 @@ export default function RotatingRapidModel() {
         <directionalLight position={[-10, -10, -5]} intensity={2} color="#2471ed" />
 
         <Center position={[5, 0, 0]}>
-            <SatelliteModel />
+            <Float
+              speed={2}
+              rotationIntensity={0.2}
+              floatIntensity={1}
+              floatingRange={[-0.2, 0.2]} 
+            >
+              <SatelliteModel />
+            </Float>
         </Center>
 
         <Environment preset="city" />
