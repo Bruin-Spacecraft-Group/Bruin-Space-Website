@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/Button";
 
 const navLinks = [
   { name: "Home", href: "/" },
+  { name: "About Us", href: "/#about" },
   { name: "Rapid", href: "/rapid" },
-  { name: "Overseer", href: "#" },
-  { name: "Contact Us", href: "#" },
+  { name: "Overseer", href: "/#projects" },
 ];
 
 export default function Navbar() {
@@ -43,9 +43,15 @@ export default function Navbar() {
           </div>
 
           <div className="flex-1 flex items-center justify-end gap-3">
-            <Button className="rounded-full bg-white text-black font-medium hover:bg-neutral-200 hover:scale-105 transition-all duration-300 px-6 hidden sm:flex">
-              Join Us
-            </Button>
+            <a 
+              href="https://linktr.ee/uclabruinspace" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <Button className="rounded-full bg-white text-black font-medium hover:bg-neutral-200 hover:scale-105 transition-all duration-300 px-6 hidden sm:flex cursor-pointer">
+                Join Us
+              </Button>
+            </a>
 
             <button
               onClick={() => setIsOpen(true)}
@@ -97,9 +103,16 @@ export default function Navbar() {
                   </a>
                 ))}
                 <div className="h-px bg-white/10 my-2" />
-                <Button className="w-full rounded-full bg-blue-600 hover:bg-blue-500 text-white">
-                  Join Us
-                </Button>
+                
+                <a 
+                  href="https://linktr.ee/uclabruinspace" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <Button className="w-full rounded-full bg-blue-600 hover:bg-blue-500 text-white cursor-pointer">
+                    Join Us
+                  </Button>
+                </a>
               </div>
             </motion.div>
           </>
