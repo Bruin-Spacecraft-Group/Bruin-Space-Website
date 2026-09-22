@@ -3,9 +3,8 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/ui/Button";
-import { links } from "@/components/navigation/Footer.astro";
 
-const linktreeUrl = links.linktree;
+const linktreeUrl = "https://linktr.ee/bruinspace";
 
 const navLinks = [
   { name: "Home", href: "/" },
