@@ -3,12 +3,14 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/ui/Button";
+import { links } from "@/components/navigation/Footer.astro";
+
+const linktreeUrl = links.linktree;
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/#about" },
   { name: "Rapid", href: "/rapid" },
-  { name: "Overseer", href: "/#projects" },
 ];
 
 export default function Navbar() {
@@ -44,7 +46,7 @@ export default function Navbar() {
 
           <div className="flex-1 flex items-center justify-end gap-3">
             <a 
-              href="https://linktr.ee/uclabruinspace" 
+              href={linktreeUrl} 
               target="_blank" 
               rel="noopener noreferrer"
             >
@@ -105,7 +107,7 @@ export default function Navbar() {
                 <div className="h-px bg-white/10 my-2" />
                 
                 <a 
-                  href="https://linktr.ee/uclabruinspace" 
+                  href={linktreeUrl} 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
