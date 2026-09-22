@@ -110,11 +110,6 @@ import ExecTeam from "@/components/teams/ExecTeam.astro";
             <Meteors client:visible number={20} />
         </div>
 
-        <div id="bg-overseer" class="absolute inset-0 z-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none">
-            <div class="absolute inset-0 bg-black/70 z-10"></div> {/* Dark Overlay for text readability */}
-            <img src="/overseer.jpg" alt="Overseer Background" class="w-full h-full object-cover" />
-        </div>
-
         <div id="bg-rapid" class="absolute inset-0 z-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none">
             <div class="absolute inset-0 bg-black/70 z-10"></div> {/* Dark Overlay */}
             <img src="/rapid.jpg" alt="Rapid Background" class="w-full h-full object-cover" />
@@ -129,30 +124,7 @@ import ExecTeam from "@/components/teams/ExecTeam.astro";
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                
-                <a href="#" id="card-overseer" class="block group relative">
-                  <div class="relative overflow-hidden rounded-[2rem] bg-neutral-900/40 border border-white/10 hover:border-orange-500/30 transition-all duration-500 hover:shadow-[0_0_50px_-10px_rgba(249,115,22,0.2)] h-full backdrop-blur-[2px]">
-                      <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      
-                      <div class="relative p-10 flex flex-col h-full min-h-[400px] justify-between">
-                          <div>
-                              <div class="inline-block px-3 py-1 rounded-full border border-orange-500/30 bg-orange-500/10 text-orange-400 text-xs font-mono mb-6">
-                                  INTRO PROJECT
-                              </div>
-                              <h3 class="text-4xl font-bold mb-4 group-hover:text-orange-100 transition-colors">Overseer</h3>
-                              <p class="text-neutral-300 text-lg leading-relaxed">
-                                  High-altitude weather balloon project, designed to be accessible to new members. Overseer introduces students to mission design, hardware, and software through a series of structured flights.
-                              </p>
-                          </div>
-                          
-                          <div class="mt-8 flex items-center gap-2 text-orange-400 font-medium group-hover:translate-x-2 transition-transform">
-                               Explore Mission <span>→</span>
-                          </div>
-                      </div>
-                  </div>
-                </a>
-
+            <div class="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
                 <a href="/rapid" id="card-rapid" class="block group relative">
                     <div class="relative overflow-hidden rounded-[2rem] bg-neutral-900/40 border border-white/10 hover:border-blue-500/30 transition-all duration-500 hover:shadow-[0_0_50px_-10px_rgba(59,130,246,0.2)] h-full backdrop-blur-[2px]">
                         <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -174,38 +146,9 @@ import ExecTeam from "@/components/teams/ExecTeam.astro";
                         </div>
                     </div>
                 </a>
-
             </div>
         </div>
       </section>
-
-      <script>
-	  	document.addEventListener('DOMContentLoaded', () => {
-			const cardOverseer = document.getElementById('card-overseer')!;
-			const bgOverseer = document.getElementById('bg-overseer')!;
-			
-			const cardRapid = document.getElementById('card-rapid')!;
-			const bgRapid = document.getElementById('bg-rapid')!;
-
-			cardOverseer.addEventListener('mouseenter', () => {
-				bgOverseer.classList.remove('opacity-0');
-				bgOverseer.classList.add('opacity-100');
-			});
-			cardOverseer.addEventListener('mouseleave', () => {
-				bgOverseer.classList.remove('opacity-100');
-				bgOverseer.classList.add('opacity-0');
-			});
-
-			cardRapid.addEventListener('mouseenter', () => {
-				bgRapid.classList.remove('opacity-0');
-				bgRapid.classList.add('opacity-100');
-			});
-			cardRapid.addEventListener('mouseleave', () => {
-				bgRapid.classList.remove('opacity-100');
-				bgRapid.classList.add('opacity-0');
-			});
-		});
-	  </script>
 
       <section id="about" class="relative w-full bg-neutral-950 border-t border-white/10">
 
